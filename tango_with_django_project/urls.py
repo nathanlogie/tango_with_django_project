@@ -24,3 +24,5 @@ urlpatterns = [
     # The above line means any urls starting with rango/ are handled by rango
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+co = ""
