@@ -1,6 +1,6 @@
 import django
 import os
-
+import random
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'tango_with_django_project.settings')
 
@@ -48,8 +48,8 @@ def populate():
         return c
 
     def add_page(cat, title, url, views=0):
-        p = Page.objects.get_or_create(category=cat, title=title, url=url)[0]
-        p.views = views
+        views = random.randint(2, 30)
+        p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
         p.save()
         return p
 
