@@ -14,7 +14,7 @@ def index(request):
 
 
 def about(request):
-    response = "Rango says here is the about page." + '<a href="/rango/">Index</a>'
+    # response = "Rango says here is the about page." + '<a href="/rango/">Index</a>'
     context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
     return render(request, 'rango/about.html', context=context_dict)
 
@@ -69,7 +69,7 @@ def add_page(request, category_name_slug):
 
                 return redirect(reverse('rango:show_category',
                                         kwargs={'category_name_slug':
-                                                    category_name_slug}))
+                                                category_name_slug}))
 
         else:
             print(form.errors)
