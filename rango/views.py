@@ -74,7 +74,7 @@ def add_page(request, category_name_slug):
 
                 return redirect(reverse('rango:show_category',
                                         kwargs={'category_name_slug':
-                                                    category_name_slug}))
+                                                category_name_slug}))
 
         else:
             print(form.errors)
@@ -89,6 +89,7 @@ def register(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST)
+
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
@@ -102,7 +103,6 @@ def register(request):
 
             profile.save()
             registered = True
-
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -110,10 +110,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     return render(request, 'rango/register.html',
-                  context={'user_form': user_form,
-                           'profile_form': profile_form,
-                           'registered': registered
-                           })
+                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 
 def user_login(request):
